@@ -1,0 +1,66 @@
+/* #ifdef H5 */
+
+uni-page {
+    display: none;
+}
+
+uni-page.block {
+    display: block !important;
+    min-height: 100%;
+}
+
+uni-page.animation-enter {
+	transform: translateX(-100rpx);
+    min-height: 100%;
+}
+
+uni-page.animation-before {
+	transform: translateX(750rpx);
+    background-color: #FFFFFF;
+}
+
+uni-page.animation-after {
+	transform: translateX(0);
+    background-color: #FFFFFF;
+}
+
+uni-page.animation {
+	transition: all .3s ease;
+}
+
+uni-page2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    display: none;
+    background-color: #FFFFFF;
+}
+
+uni-page2.block {
+    position: fixed;
+    display: block !important;
+}
+
+uni-page2.z-index-High {
+    z-index: 999;
+}
+
+uni-page2.z-index-low {
+    z-index: -1;
+}
+
+uni-page2.animation {
+	transition: all .3s ease;
+}
+
+uni-page2.animation-enter {
+	transform: translateX(-100rpx);
+}
+
+uni-page2.animation-before {
+	transform: translateX(750rpx);
+}
+
+/* #endif */
