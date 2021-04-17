@@ -4,13 +4,12 @@ uniapp插件。解决uniapp框架下H5端页面切换无过渡动画的问题，
 ### 一、目录结构
 
 ```
-project                    项目目录
-├─app                      应用目录
-│  ├─components            组件目录
-│  │  └─h5-page-animation  本插件目录
-│  │  │  ├─index.vue       本插件主文件
-│  │  │  └─index.css       本插件主样式文件
-│  │  ...
+project                 项目目录
+├─components            组件目录
+│  └─h5-page-animation  本插件目录
+│  │  ├─index.vue       本插件主文件
+│  │  └─index.css       本插件主样式文件
+│  ...
 ```
 
 ### 二、安装说明
