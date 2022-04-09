@@ -47,7 +47,7 @@ export default {
 						const scrollTopList = [...scrollViewList].map(e => {
 							return {
 								top: e.scrollTop,
-								left: e.scrollLeft
+								left: e.scrollLeft,
 							}
 						})
 						// 保持页面滚动高度
@@ -96,7 +96,7 @@ export default {
 						const scrollTopList = [...scrollViewList].map(e => {
 							return {
 								top: e.scrollTop,
-								left: e.scrollLeft
+								left: e.scrollLeft,
 							}
 						})
             // 保持滚动高度
