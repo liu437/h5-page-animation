@@ -16,7 +16,7 @@ export default {
 
         this.$router.beforeEach((to, from, next) => {
             // tabBar切换无动画
-            if (to.type == 'switchTab') {
+            if (to.type == 'switchTab' || to.path == '/preview-image' || from.path == '/preview-image') {
                 next && next();
                 setTimeout(() => {
                     const page1_class = document.querySelector('uni-page').classList;
@@ -42,11 +42,26 @@ export default {
             page2.innerHTML = document.querySelector('uni-page').innerHTML;
             // 调整虚拟页样式
             const page2_class = page2.classList;
-            // 保持滚动高度
+						// 获取页面中ScrollView滚动位置
+						const scrollViewList = document.querySelectorAll('uni-page uni-scroll-view>.uni-scroll-view>.uni-scroll-view')
+						const scrollTopList = [...scrollViewList].map(e => {
+							return {
+								top: e.scrollTop,
+								left: e.scrollLeft,
+							}
+						})
+						// 保持页面滚动高度
             let sh = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-            page2.querySelector('uni-page-wrapper').style.cssText = 'margin-top:-' + sh + 'px';
+						page2.querySelector('uni-page-wrapper').style.cssText = 'margin-top:-' + sh + 'px';
             // 显示
             page2_class.add('hpa-show');
+						// 恢复ScrollView位置
+						if(scrollTopList) {
+							document.querySelectorAll('uni-page2 uni-scroll-view>.uni-scroll-view>.uni-scroll-view').forEach((e,i) => {
+								e.scrollTop = scrollTopList[i].top
+								e.scrollLeft = scrollTopList[i].left
+							})
+						}
             // 调整真实页样式
             next && next();
             setTimeout(() => {
@@ -76,10 +91,25 @@ export default {
             page2.innerHTML = document.querySelector('uni-page').innerHTML;
             // 调整虚拟页样式
             const page2_class = page2.classList;
+						// 获取页面中ScrollView滚动位置
+						const scrollViewList = document.querySelectorAll('uni-page uni-scroll-view>.uni-scroll-view>.uni-scroll-view')
+						const scrollTopList = [...scrollViewList].map(e => {
+							return {
+								top: e.scrollTop,
+								left: e.scrollLeft,
+							}
+						})
             // 保持滚动高度
             let sh = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
             page2.querySelector('uni-page-wrapper').style.cssText = 'margin-top:-' + sh + 'px';
             page2_class.add('hpa-High', 'hpa-show');
+						// 恢复ScrollView位置
+						if(scrollTopList) {
+							document.querySelectorAll('uni-page2 uni-scroll-view>.uni-scroll-view>.uni-scroll-view').forEach((e,i) => {
+								e.scrollTop = scrollTopList[i].top
+								e.scrollLeft = scrollTopList[i].left
+							})
+						}
             // 调整真实页样式
             next && next();
             setTimeout(() => {
